@@ -6,6 +6,7 @@ class SliderObject {
   SliderObject(this.title, this.subTitle, this.image);
 }
 
+//start
 class Customer {
   String id;
   String name;
@@ -28,3 +29,4 @@ class Authentication {
 
   Authentication(this.customer, this.contacts);
 }
+//end
