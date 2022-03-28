@@ -1,5 +1,5 @@
 // extension on String
-
+//fix null value
 extension NonNullString on String? {
   String orEmpty() {
     if (this == null) {
