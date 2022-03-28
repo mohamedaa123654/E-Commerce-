@@ -4,6 +4,7 @@ import 'package:learn/data/request/request.dart';
 
 import 'model.dart';
 
+//code
 abstract class Repository {
   Future<Either<Failure, Authentication>> login(LoginRequest loginRequest);
 }
