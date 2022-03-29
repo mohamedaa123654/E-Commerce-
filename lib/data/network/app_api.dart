@@ -6,7 +6,7 @@ part 'app_api.g.dart';
 
 //API link
 
-@RestApi(baseUrl: Constant.baseUrl)
+@RestApi(baseUrl: Constants.baseUrl)
 abstract class AppServiceClient {
   factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 

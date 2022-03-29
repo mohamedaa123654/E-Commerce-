@@ -9,18 +9,18 @@ import 'package:learn/domain/model.dart';
 extension CustomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
     return Customer(
-        this?.id?.orEmpty() ?? Constant.EMPTY,
-        this?.name?.orEmpty() ?? Constant.EMPTY,
-        this?.numOfNotifications?.orZero() ?? Constant.ZERO);
+        this?.id?.orEmpty() ?? Constants.EMPTY,
+        this?.name?.orEmpty() ?? Constants.EMPTY,
+        this?.numOfNotifications?.orZero() ?? Constants.ZERO);
   }
 }
 
 extension ContactsResponseMapper on ContactResponse? {
   Contacts toDomain() {
     return Contacts(
-        this?.email?.orEmpty() ?? Constant.EMPTY,
-        this?.phone?.orEmpty() ?? Constant.EMPTY,
-        this?.link?.orEmpty() ?? Constant.EMPTY);
+        this?.email?.orEmpty() ?? Constants.EMPTY,
+        this?.phone?.orEmpty() ?? Constants.EMPTY,
+        this?.link?.orEmpty() ?? Constants.EMPTY);
   }
 }
 
