@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:learn/domain/model.dart';
+import 'package:learn/domain/model/model.dart';
 import 'package:learn/presentation/onboarding/onboarding_viewmodel.dart';
 
 import 'package:learn/presentation/resources/color_manager.dart';

@@ -2,11 +2,11 @@ import 'package:learn/data/data_source/remote_data_source.dart';
 import 'package:learn/data/mapper/mapper.dart';
 import 'package:learn/data/network/error_handler.dart';
 import 'package:learn/data/network/network_info.dart';
-import 'package:learn/domain/model.dart';
+import 'package:learn/domain/model/model.dart';
 import 'package:learn/data/request/request.dart';
 import 'package:learn/data/network/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:learn/domain/repository.dart';
+import 'package:learn/domain/repository/repository.dart';
 
 class RepositoryImpl implements Repository {
   final RemoteDataSource _remoteDataSource;

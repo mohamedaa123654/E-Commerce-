@@ -4,7 +4,7 @@ import 'package:learn/app/constant.dart';
 // to convert the response into a non nullable object (model)
 
 import 'package:learn/data/responses/responses.dart';
-import 'package:learn/domain/model.dart';
+import 'package:learn/domain/model/model.dart';
 
 extension CustomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
