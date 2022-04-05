@@ -1,3 +1,5 @@
+// onboarding models
+
 class SliderObject {
   String title;
   String subTitle;
@@ -6,7 +8,16 @@ class SliderObject {
   SliderObject(this.title, this.subTitle, this.image);
 }
 
-//start
+class SliderViewObject {
+  SliderObject sliderObject;
+  int numOfSlides;
+  int currentIndex;
+
+  SliderViewObject(this.sliderObject, this.numOfSlides, this.currentIndex);
+}
+
+// login models
+
 class Customer {
   String id;
   String name;
@@ -16,11 +27,11 @@ class Customer {
 }
 
 class Contacts {
-  String email;
   String phone;
+  String email;
   String link;
 
-  Contacts(this.email, this.phone, this.link);
+  Contacts(this.phone, this.email, this.link);
 }
 
 class Authentication {
@@ -29,4 +40,3 @@ class Authentication {
 
   Authentication(this.customer, this.contacts);
 }
-//end

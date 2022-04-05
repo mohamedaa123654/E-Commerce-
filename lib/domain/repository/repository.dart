@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:learn/data/network/failure.dart';
-import 'package:learn/data/request/request.dart';
 
-import '../model/model.dart';
+import '../../data/network/failure.dart';
+import '../../data/network/requests.dart';
+import '../model/models.dart';
 
-//code
 abstract class Repository {
   Future<Either<Failure, Authentication>> login(LoginRequest loginRequest);
 }

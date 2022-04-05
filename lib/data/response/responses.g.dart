@@ -7,12 +7,12 @@ part of 'responses.dart';
 // **************************************************************************
 
 BaseResponse _$BaseResponseFromJson(Map<String, dynamic> json) => BaseResponse()
-  ..status = json['res_status'] as int?
+  ..status = json['status'] as int?
   ..message = json['message'] as String?;
 
 Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
     <String, dynamic>{
-      'res_status': instance.status,
+      'status': instance.status,
       'message': instance.message,
     };
 
@@ -20,28 +20,28 @@ CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
     CustomerResponse(
       json['id'] as String?,
       json['name'] as String?,
-      json['numberOfNotifications'] as int?,
+      json['numOfNotifications'] as int?,
     );
 
 Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'numberOfNotifications': instance.numOfNotifications,
+      'numOfNotifications': instance.numOfNotifications,
     };
 
-ContactResponse _$ContactResponseFromJson(Map<String, dynamic> json) =>
-    ContactResponse(
+ContactsResponse _$ContactsResponseFromJson(Map<String, dynamic> json) =>
+    ContactsResponse(
+      json['phone'] as String?,
       json['email'] as String?,
       json['link'] as String?,
-      json['phone'] as String?,
     );
 
-Map<String, dynamic> _$ContactResponseToJson(ContactResponse instance) =>
+Map<String, dynamic> _$ContactsResponseToJson(ContactsResponse instance) =>
     <String, dynamic>{
       'phone': instance.phone,
-      'link': instance.link,
       'email': instance.email,
+      'link': instance.link,
     };
 
 AuthenticationResponse _$AuthenticationResponseFromJson(
@@ -52,15 +52,15 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
           : CustomerResponse.fromJson(json['customer'] as Map<String, dynamic>),
       json['contacts'] == null
           ? null
-          : ContactResponse.fromJson(json['contacts'] as Map<String, dynamic>),
+          : ContactsResponse.fromJson(json['contacts'] as Map<String, dynamic>),
     )
-      ..status = json['res_status'] as int?
+      ..status = json['status'] as int?
       ..message = json['message'] as String?;
 
 Map<String, dynamic> _$AuthenticationResponseToJson(
         AuthenticationResponse instance) =>
     <String, dynamic>{
-      'res_status': instance.status,
+      'status': instance.status,
       'message': instance.message,
       'customer': instance.customer,
       'contacts': instance.contacts,

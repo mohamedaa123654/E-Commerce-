@@ -1,26 +1,24 @@
-import 'package:learn/app/extension.dart';
-import 'package:learn/app/constant.dart';
+import 'package:learn/app/extensions.dart';
 
-// to convert the response into a non nullable object (model)
-
-import 'package:learn/data/responses/responses.dart';
-import 'package:learn/domain/model/model.dart';
+import '../../app/constants.dart';
+import '../../domain/model/models.dart';
+import '../response/responses.dart';
 
 extension CustomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
     return Customer(
-        this?.id?.orEmpty() ?? Constants.EMPTY,
-        this?.name?.orEmpty() ?? Constants.EMPTY,
+        this?.id?.orEmpty() ?? Constants.empty,
+        this?.name?.orEmpty() ?? Constants.empty,
         this?.numOfNotifications?.orZero() ?? Constants.ZERO);
   }
 }
 
-extension ContactsResponseMapper on ContactResponse? {
+extension ContactsResponseMapper on ContactsResponse? {
   Contacts toDomain() {
     return Contacts(
-        this?.email?.orEmpty() ?? Constants.EMPTY,
-        this?.phone?.orEmpty() ?? Constants.EMPTY,
-        this?.link?.orEmpty() ?? Constants.EMPTY);
+        this?.email?.orEmpty() ?? Constants.empty,
+        this?.phone?.orEmpty() ?? Constants.empty,
+        this?.link?.orEmpty() ?? Constants.empty);
   }
 }
 

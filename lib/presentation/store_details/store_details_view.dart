@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class StoreDetailsView extends StatefulWidget {
   const StoreDetailsView({Key? key}) : super(key: key);

@@ -1,9 +1,12 @@
 import 'dart:async';
 
-import '../../../presentation/base/base_view_model.dart';
+import 'package:learn/presentation/common/state_renderer/state_renderer.dart';
+
+import '../../base/baseviewmodel.dart';
 
 import '../../../domain/usecase/login_usecase.dart';
 import '../../common/freezed_data_classes.dart';
+import '../../common/state_renderer/state_renderer_Impl.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -14,24 +17,28 @@ class LoginViewModel extends BaseViewModel
 
   final StreamController _areAllInputsValidStreamController =
       StreamController<void>.broadcast();
+  StreamController isUserLoggedInSuccessfullyStreamController =
+      StreamController<bool>();
 
   var loginObject = LoginObject("", "");
-  // final LoginUseCase _loginUseCase;
+  final LoginUseCase _loginUseCase;
 
-  // LoginViewModel(this._loginUseCase);
-  LoginViewModel();
+  LoginViewModel(this._loginUseCase);
 
   // inputs
   @override
   void dispose() {
+    super.dispose();
     _userNameStreamController.close();
     _passwordStreamController.close();
     _areAllInputsValidStreamController.close();
+    isUserLoggedInSuccessfullyStreamController.close();
   }
 
   @override
   void start() {
-    // TODO: implement start
+    // view model should tell view please show content state
+    inputState.add(ContentState());
   }
 
   @override
@@ -59,17 +66,22 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
-    // (await _loginUseCase.execute(
-    //         LoginUseCaseInput(loginObject.userName, loginObject.password)))
-    //     .fold(
-    //         (failure) => {
-    //               // left -> failure
-    //               print(failure.message)
-    //             },
-    //         (data) => {
-    //               // right -> data (success)
-    //               print(data.customer?.name)
-    //             });
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+    (await _loginUseCase.execute(
+            LoginUseCaseInput(loginObject.userName, loginObject.password)))
+        .fold(
+            (failure) => {
+                  // left -> failure
+                  inputState.add(ErrorState(
+                      StateRendererType.popupErrorState, failure.message))
+                }, (data) {
+      // right -> data (success)
+      //content
+      inputState.add(ContentState());
+      isUserLoggedInSuccessfullyStreamController.add(true);
+      //navigate to main Screen
+    });
   }
 
   // outputs
