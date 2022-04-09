@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:learn/presentation/common/state_renderer/state_renderer.dart';
-
-import '../../base/baseviewmodel.dart';
+import '../../../presentation/base/baseviewmodel.dart';
+import '../../../presentation/common/state_renderer/state_renderer.dart';
+import '../../../presentation/common/state_renderer/state_renderer_impl.dart';
 
 import '../../../domain/usecase/login_usecase.dart';
 import '../../common/freezed_data_classes.dart';
-import '../../common/state_renderer/state_renderer_Impl.dart';
 
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
@@ -17,6 +16,7 @@ class LoginViewModel extends BaseViewModel
 
   final StreamController _areAllInputsValidStreamController =
       StreamController<void>.broadcast();
+
   StreamController isUserLoggedInSuccessfullyStreamController =
       StreamController<bool>();
 
@@ -77,10 +77,10 @@ class LoginViewModel extends BaseViewModel
                       StateRendererType.popupErrorState, failure.message))
                 }, (data) {
       // right -> data (success)
-      //content
+      // content
       inputState.add(ContentState());
+      // navigate to main screen
       isUserLoggedInSuccessfullyStreamController.add(true);
-      //navigate to main Screen
     });
   }
 

@@ -1,15 +1,18 @@
+import '../presentation/resources/theme_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../presentation/resources/routes_manager.dart';
-import '../presentation/resources/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
-  MyApp._internal(); // private named constructor
-  int appState = 0;
-  static final MyApp instance =
-      MyApp._internal(); // single instance -- singleton
+  // named constructor
+  MyApp._internal();
 
-  factory MyApp() => instance; // factory for the class instance
+  int appState = 0;
+
+  static final MyApp _instance =
+      MyApp._internal(); // singleton or single instance
+
+  factory MyApp() => _instance; // factory
 
   @override
   _MyAppState createState() => _MyAppState();

@@ -1,6 +1,5 @@
+import '../../data/network/failure.dart';
 import 'package:dio/dio.dart';
-
-import 'failure.dart';
 
 class ErrorHandler implements Exception {
   late Failure failure;

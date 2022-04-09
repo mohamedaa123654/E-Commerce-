@@ -1,4 +1,5 @@
 // onboarding models
+import '../../app/extensions.dart';
 
 class SliderObject {
   String title;

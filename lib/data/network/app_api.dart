@@ -1,8 +1,8 @@
+import '../response/responses.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import '../../app/constants.dart';
-import '../response/responses.dart';
 
 part 'app_api.g.dart';
 
@@ -13,4 +13,7 @@ abstract class AppServiceClient {
   @POST("/customers/login")
   Future<AuthenticationResponse> login(
       @Field("email") String email, @Field("password") String password);
+
+  @POST("/customers/forgotPassword")
+  Future<ForgotPasswordResponse> forgotPassword(@Field("email") String email);
 }
