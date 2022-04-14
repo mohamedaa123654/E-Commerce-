@@ -18,7 +18,7 @@ class RegisterUseCase
     return await _repository.register(RegisterRequest(
         input.userName,
         input.contryMobileCode,
-        input.contryMobile,
+        input.mobileNumber,
         input.email,
         input.password,
         input.profilePicture));
@@ -28,7 +28,7 @@ class RegisterUseCase
 class RegisterUseCaseInput {
   String userName;
   String contryMobileCode;
-  String contryMobile;
+  String mobileNumber;
   String email;
   String password;
   String profilePicture;
@@ -36,7 +36,7 @@ class RegisterUseCaseInput {
   RegisterUseCaseInput(
     this.userName,
     this.contryMobileCode,
-    this.contryMobile,
+    this.mobileNumber,
     this.email,
     this.password,
     this.profilePicture,

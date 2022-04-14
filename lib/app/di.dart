@@ -1,3 +1,7 @@
+import 'package:image_picker/image_picker.dart';
+import 'package:learn/domain/usecase/register_usecase.dart';
+import 'package:learn/presentation/register/view_model/register_viewmodel.dart';
+
 import '../../app/app_prefs.dart';
 import '../../data/data_source/remote_data_source.dart';
 import '../../data/network/app_api.dart';
@@ -63,5 +67,15 @@ initForgotPasswordModule() {
         () => ForgotPasswordUseCase(instance()));
     instance.registerFactory<ForgotPasswordViewModel>(
         () => ForgotPasswordViewModel(instance()));
+  }
+}
+
+initRegisterModule() {
+  if (!GetIt.I.isRegistered<RegisterUseCase>()) {
+    instance
+        .registerFactory<RegisterUseCase>(() => RegisterUseCase(instance()));
+    instance.registerFactory<RegisterViewModel>(
+        () => RegisterViewModel(instance()));
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }
