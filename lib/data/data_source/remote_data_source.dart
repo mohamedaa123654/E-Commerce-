@@ -38,4 +38,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
         // registerRequest.profilePicture
         );
   }
+
+  @override
+  Future<HomeResponse> getHomeData() async {
+    return await _appServiceClient.getHomeData();
+  }
 }

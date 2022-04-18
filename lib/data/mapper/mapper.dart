@@ -1,7 +1,8 @@
 import '../../app/constants.dart';
 import '../../domain/model/models.dart';
-import '../response/responses.dart';
+// import '../response/responses.dart';
 import '../../app/extensions.dart';
+import '../response/responses.dart';
 
 extension CustomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
@@ -30,5 +31,63 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
 extension ForgotPasswordResponseMapper on ForgotPasswordResponse? {
   String toDomain() {
     return this?.support?.orEmpty() ?? Constants.empty;
+  }
+}
+
+extension ServiceResponseMapper on ServiceResponse? {
+  Service toDomain() {
+    return Service(
+      this?.id?.orEmpty() ?? Constants.empty,
+      this?.title?.orEmpty() ?? Constants.empty,
+      this?.image?.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension StoresResponseMapper on StoreResponse? {
+  Store toDomain() {
+    return Store(
+      this?.id?.orEmpty() ?? Constants.empty,
+      this?.title?.orEmpty() ?? Constants.empty,
+      this?.image?.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension BannersResponseMapper on BannersResponse? {
+  BannerAd toDomain() {
+    return BannerAd(
+      this?.id?.orEmpty() ?? Constants.empty,
+      this?.title?.orEmpty() ?? Constants.empty,
+      this?.image?.orEmpty() ?? Constants.empty,
+      this?.link?.orEmpty() ?? Constants.empty,
+    );
+  }
+}
+
+extension HomeResponseMapper on HomeResponse? {
+  HomeObject toDomain() {
+    List<Service> services = (this
+                ?.data
+                ?.services
+                ?.map((serviceResponse) => serviceResponse.toDomain()) ??
+            const Iterable.empty())
+        .cast<Service>()
+        .toList();
+
+    List<BannerAd> banners = (this
+                ?.data
+                ?.banners
+                ?.map((bannerResponse) => bannerResponse.toDomain()) ??
+            const Iterable.empty())
+        .cast<BannerAd>()
+        .toList();
+    List<Store> stores =
+        (this?.data?.stores?.map((storeResponse) => storeResponse.toDomain()) ??
+                const Iterable.empty())
+            .cast<Store>()
+            .toList();
+    var data = HomeData(services, stores, banners);
+    return HomeObject(data);
   }
 }

@@ -1,4 +1,6 @@
 // onboarding models
+import 'package:flutter/cupertino.dart';
+
 import '../../app/extensions.dart';
 
 class SliderObject {
@@ -40,4 +42,45 @@ class Authentication {
   Contacts? contacts;
 
   Authentication(this.customer, this.contacts);
+}
+
+class Service {
+  String id;
+  String title;
+  String image;
+
+  Service(this.id, this.title, this.image);
+}
+
+class Store {
+  String id;
+  String title;
+  String image;
+
+  Store(this.id, this.title, this.image);
+}
+
+class BannerAd {
+  String id;
+  String title;
+  String image;
+  String link;
+
+  BannerAd(this.id, this.title, this.image, this.link);
+}
+
+class HomeData {
+  List<Service> service;
+  List<Store> store;
+  List<BannerAd> bannerAd;
+
+  HomeData(this.service, this.store, this.bannerAd);
+}
+
+class HomeObject {
+  HomeData? data;
+
+  HomeObject(
+    this.data,
+  );
 }
