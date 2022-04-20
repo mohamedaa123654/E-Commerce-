@@ -1,7 +1,7 @@
 import 'package:learn/presentation/resources/color_manager.dart';
 import 'package:learn/presentation/resources/values_manager.dart';
 
-import '../../presentation/main/pages/home_page.dart';
+import 'pages/home/view/home_page.dart';
 import '../../presentation/main/pages/notifications_page.dart';
 import '../../presentation/main/pages/search_page.dart';
 import '../../presentation/main/pages/settings_page.dart';

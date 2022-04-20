@@ -1,4 +1,5 @@
 import 'package:image_picker/image_picker.dart';
+import 'package:learn/domain/usecase/home_usecase.dart';
 import 'package:learn/domain/usecase/register_usecase.dart';
 import 'package:learn/presentation/register/view_model/register_viewmodel.dart';
 
@@ -18,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/usecase/forgot_password_usecase.dart';
 import '../presentation/forgot_password/forgot_password_viewmodel.dart';
+import '../presentation/main/pages/home/view_model/home_viewmodel.dart';
 
 final instance = GetIt.instance;
 
@@ -77,5 +79,12 @@ initRegisterModule() {
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(instance()));
     instance.registerFactory<ImagePicker>(() => ImagePicker());
+  }
+}
+
+initHomeModule() {
+  if (!GetIt.I.isRegistered<HomeUseCase>()) {
+    instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
+    instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
   }
 }

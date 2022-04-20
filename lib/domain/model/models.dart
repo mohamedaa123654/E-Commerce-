@@ -45,7 +45,7 @@ class Authentication {
 }
 
 class Service {
-  String id;
+  int id;
   String title;
   String image;
 
@@ -53,7 +53,7 @@ class Service {
 }
 
 class Store {
-  String id;
+  int id;
   String title;
   String image;
 
@@ -61,7 +61,7 @@ class Store {
 }
 
 class BannerAd {
-  String id;
+  int id;
   String title;
   String image;
   String link;
@@ -72,13 +72,13 @@ class BannerAd {
 class HomeData {
   List<Service> service;
   List<Store> store;
-  List<BannerAd> bannerAd;
+  List<BannerAd> banner;
 
-  HomeData(this.service, this.store, this.bannerAd);
+  HomeData(this.service, this.store, this.banner);
 }
 
 class HomeObject {
-  HomeData? data;
+  HomeData data;
 
   HomeObject(
     this.data,
