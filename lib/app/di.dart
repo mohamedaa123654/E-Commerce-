@@ -17,6 +17,7 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../data/data_source/local_data_source.dart';
 import '../domain/usecase/forgot_password_usecase.dart';
 import '../presentation/forgot_password/forgot_password_viewmodel.dart';
 import '../presentation/main/pages/home/view_model/home_viewmodel.dart';
@@ -50,10 +51,12 @@ Future<void> initAppModule() async {
   instance.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(instance<AppServiceClient>()));
 
-  // repository
+// local data source
+  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
+  // repository
   instance.registerLazySingleton<Repository>(
-      () => RepositoryImpl(instance(), instance()));
+      () => RepositoryImpl(instance(), instance(), instance()));
 }
 
 initLoginModule() {
