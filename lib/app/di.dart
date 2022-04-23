@@ -18,9 +18,12 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/data_source/local_data_source.dart';
+import '../domain/usecase/details_usecase.dart';
 import '../domain/usecase/forgot_password_usecase.dart';
+
 import '../presentation/forgot_password/forgot_password_viewmodel.dart';
 import '../presentation/main/pages/home/view_model/home_viewmodel.dart';
+import '../presentation/store_details/store_details_viewmodel.dart';
 
 final instance = GetIt.instance;
 
@@ -89,5 +92,14 @@ initHomeModule() {
   if (!GetIt.I.isRegistered<HomeUseCase>()) {
     instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
     instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
+  }
+}
+
+initStoreDetailsModule() {
+  if (!GetIt.I.isRegistered<StoreDetailsUseCase>()) {
+    instance.registerFactory<StoreDetailsUseCase>(
+        () => StoreDetailsUseCase(instance()));
+    instance.registerFactory<StoreDetailsViewModel>(
+        () => StoreDetailsViewModel(instance()));
   }
 }
